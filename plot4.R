@@ -16,7 +16,7 @@ plotReactivePower <- function(data)
   data$Global_reactive_power <- as.numeric(gsub(",", "",data$Global_reactive_power))
   
   #Create the plot fully configured
-  plot(data$DateTime, data$Global_reactive_power, type="l", col = "black", xlab = "datatime", ylab = "Global_reactive_power")
+  plot(data$DateTime, data$Global_reactive_power, type="l", col = "black", xlab = "datetime", ylab = "Global_reactive_power")
 }
 
 plotVoltage <- function(data)
@@ -25,7 +25,7 @@ plotVoltage <- function(data)
   data$Voltage <- as.numeric(gsub(",", "",data$Voltage))
   
   #Create the plot fully configured
-  plot(data$DateTime, data$Voltage, type="l", col = "black", xlab = "datatime", ylab = "Voltage")
+  plot(data$DateTime, data$Voltage, type="l", col = "black", xlab = "datetime", ylab = "Voltage")
 }
 
 initPlot4 <- function(data)
@@ -43,7 +43,7 @@ plot4 <- function(data)
   
   plotVoltage(data)
   
-  plot3(data)
+  plot3(data, FALSE)
 
   plotReactivePower(data)
 }

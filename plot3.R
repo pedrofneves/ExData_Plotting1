@@ -2,7 +2,7 @@
 #   source("plot3.R")
 #   febData <- initPlotData()
 #   initPlot3()
-#   plot3(febData)
+#   plot3(febData, TRUE)
 #   savePlot3()
 
 source("plot1.R")
@@ -13,7 +13,7 @@ initPlot3 <- function()
   png(filename = "plot3.png")
 }
 
-plot3 <- function(data)
+plot3 <- function(data, borderLegend)
 {
   #Convert sub metering to numeric
   data$Sub_metering_1 <- as.numeric(gsub(",", "", data$Sub_metering_1))
@@ -29,7 +29,11 @@ plot3 <- function(data)
   lines(data$DateTime, data$Sub_metering_3, col="blue",  type="l")
   
   #Add the legend
-  legend("topright", lty = 1, col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+  border <- "o"
+  if(!borderLegend){
+    border <- "n"
+  }
+  legend("topright", lty = 1, col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), bty = border)
 }
 
 savePlot3 <- function()
